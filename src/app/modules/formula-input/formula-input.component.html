@@ -1,0 +1,25 @@
+<div class="formula">
+  <input type="text"
+         pInputText
+         #formulaInput
+         [(ngModel)]="inputValue"
+         placeholder="Начните вводить формулу"
+         class="formula_input"
+         (click)="setCursor()"/>
+  <div *ngIf="showHelp"
+       class="formula_help">
+    <div *ngFor="let item of elements; index as i"
+         (click)="selectOperator(i)"
+         class="help_item">
+      {{item.name}}
+      <i class="pi pi-info-circle item_icon"
+         (mouseenter)="showInfo(i)"
+         (mouseleave)="showInfo(i)">
+      </i>
+      <div [ngStyle]="{'top' : infoPosTop ? '0' : 'auto', 'bottom' : infoPosTop ? 'auto' : '0'}"
+           class="item_info">
+        {{item.description}}
+      </div>
+    </div>
+  </div>
+</div>
